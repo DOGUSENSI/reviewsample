@@ -5,10 +5,10 @@ import { createGlobalStyle, ThemeProvider } from 'styled-components'
 import GlobalSpinner from 'components/organisms/GlobalSpinner'
 import { AuthContextProvider } from 'contexts/AuthContext'
 import GlobalSpinnerContextProvider from 'contexts/GlobalSpinnerContext'
-import { ShoppingCartContextProvider } from 'contexts/ShoppingCartContext'
+import { ShoppingCartContextProvider } from 'contexts/ShoppingCartContext'*/
 import { theme } from 'themes'
-import type { ApiContext } from 'types'
-import { fetcher } from 'utils'*/
+//import type { ApiContext } from 'types'
+import { fetcher } from 'utils'
 
 // グローバルのスタイル
 const GlobalStyle = createGlobalStyle`
@@ -29,7 +29,7 @@ a {
   cursor: pointer;
   text-decoration: none;
   transition: .25s;
-  color: #000${/*theme.colors.black*/ ''};
+  color:${theme.colors.black};
 }
 
 ol, ul {
@@ -65,7 +65,9 @@ const MyApp = ({ Component, pageProps }: AppProps) => {
         <meta name="twitter:site" content="@truck2hand" /> */}
       </Head>
       <GlobalStyle />
-      <Component {...pageProps} />
+      <ThemeProvider theme={theme}>
+        <Component {...pageProps} />
+      </ThemeProvider>
     </>
   )
 }

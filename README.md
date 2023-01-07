@@ -1,3 +1,22 @@
+## はじめに
+
+デプロイ先は[こちら](https://reviewsample.vercel.app/)
+
+このアプリは[TypeScriptとReact/Next.jsでつくる実践Webアプリケーション](https://github.com/gihyo-book/ts-nextbook-app)のサンプルアプリをベースに作成されました。
+
+[TypeScriptとReact/Next.jsでつくる 実践Webアプリケーション開発](https://gihyo.jp/book/2022/978-4-297-12916-3)
+
+2022年7月25日紙版発売
+2022年7月22日電子版発売
+
+手島拓也，吉田健人，高林佳稀　著
+
+B5変形判／448ページ
+
+定価3,498円（本体3,180円＋税10%）
+
+ISBN 978-4-297-12916-3
+
 This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
 
 ## Getting Started

@@ -8,12 +8,12 @@ import {
   CloudUpload,
   Close,
   GitHub,
+  Star,
   Person,
 } from '@mui/icons-material'
 import SvgIcon from '@mui/material/SvgIcon'
 import styled from 'styled-components'
 import { theme } from 'themes'
-
 // list out color types
 export type ThemeColors = keyof typeof theme.colors
 
@@ -95,3 +95,5 @@ export const GitHubIcon = withIconStyle(GitHub)
 export const PersonOutlineIcon = withIconStyle(PersonOutline)
 
 export const ShoppingCartIcon = withIconStyle(ShoppingCart)
+
+export const StarIcon = withIconStyle(Star)

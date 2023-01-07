@@ -11,6 +11,7 @@ const colors = {
   gray: '#6b6b6b',
   black: '#000000',
   white: '#ffffff',
+  star:'#fac019',
   text: '#000000',
 } as const
 

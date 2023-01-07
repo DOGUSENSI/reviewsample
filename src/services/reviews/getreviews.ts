@@ -17,8 +17,8 @@ import { fetcher } from 'utils'
       "comment":"お好み焼きが美味しいです！"
     },*/
 
-const getShops = async (context: ApiContext): Promise<Review[]> => {
-  return await fetcher(`${context.apiRootUrl.replace(/\/$/g, '')}/shops`, {
+const getReviews = async (context: ApiContext): Promise<Review[]> => {
+  return await fetcher(`${context.apiRootUrl.replace(/\/$/g, '')}/reviews`, {
     headers: {
       Origin: '*',
       Accept: 'application/json',
@@ -27,4 +27,4 @@ const getShops = async (context: ApiContext): Promise<Review[]> => {
   })
 }
 
-export default getShops
+export default getReviews

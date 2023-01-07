@@ -35,7 +35,7 @@ const Template: ComponentStory<typeof ReviewCard> = (args) => (
 // Smallカード
 export const Small = Template.bind({})
 Small.args = {
-  name:"太郎",
-  star:3,
-  comment:"まぁまぁかな"
+  name: '太郎',
+  star: 3,
+  comment: 'まぁまぁかな',
 }

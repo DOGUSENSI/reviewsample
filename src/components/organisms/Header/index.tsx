@@ -2,9 +2,7 @@ import Link from 'next/link'
 import styled from 'styled-components'
 import AppLogo from 'components/atoms/AppLogo'
 import Button from 'components/atoms/Button'
-import {
-  SearchIcon,
-} from 'components/atoms/IconButton'
+import { SearchIcon } from 'components/atoms/IconButton'
 import Text from 'components/atoms/Text'
 import Box from 'components/layout/Box'
 import Flex from 'components/layout/Flex'
@@ -57,7 +55,7 @@ const Header = () => {
           <NavLink>
             <Box display={{ base: 'none', md: 'block' }}>
               <Link href="/search" passHref>
-              <Anchor>検索</Anchor>
+                <Anchor>検索</Anchor>
               </Link>
             </Box>
           </NavLink>

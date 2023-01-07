@@ -1,18 +1,18 @@
 import type { GetStaticProps, InferGetStaticPropsType, NextPage } from 'next'
 import Link from 'next/link'
+import styled from 'styled-components'
+import AppLogo from 'components/atoms/AppLogo'
+import ScaleImage from 'components/atoms/ScaleImage'
 import Text from 'components/atoms/Text'
 import Box from 'components/layout/Box'
 import Flex from 'components/layout/Flex'
-import Layout from 'components/templates/Layout'
-import getShops from 'services/shops/get-shops'
-import getReviews from 'services/reviews/getreviews'
-import getCampaigns from 'services/campaigns/getcampaigns'
-import { ApiContext, Shop, Review,Campaign } from 'types'
-import styled from 'styled-components'
-import ShopCard from 'components/organisms/Shopcard'
 import ReviewCard from 'components/organisms/Reviewcard'
-import AppLogo from 'components/atoms/AppLogo'
-import ScaleImage from 'components/atoms/ScaleImage'
+import ShopCard from 'components/organisms/Shopcard'
+import Layout from 'components/templates/Layout'
+import getCampaigns from 'services/campaigns/getcampaigns'
+import getReviews from 'services/reviews/getreviews'
+import getShops from 'services/shops/get-shops'
+import { ApiContext, Shop, Review, Campaign } from 'types'
 
 const Anchor = styled(Text)`
   cursor: pointer;
@@ -23,57 +23,50 @@ const Anchor = styled(Text)`
 type HomeProps = InferGetStaticPropsType<typeof getStaticProps>
 
 const Home: NextPage<HomeProps> = ({
-  SummaryShop, Reviews,Campaigns
+  SummaryShop,
+  Reviews,
+  Campaigns,
 }: HomeProps) => {
   const renderShop = (Shops: Shop[]) => {
-    return (
-      Shops.map((s: Shop, i: number) => (
-        <Box paddingLeft={i === 0 ? 0 : 2} key={s.id}>
-          <Link href={`/shops/${s.id}`} passHref>
-            <ShopCard
-              shopname={s.shopname}
-              category={s.category}
-              shopImageUrl={s.shopImageUrl}
-              description={s.description}
-            />
-          </Link>
-        </Box>
-      ))
-    )
+    return Shops.map((s: Shop, i: number) => (
+      <Box paddingLeft={i === 0 ? 0 : 2} key={s.id}>
+        <Link href={`/shops/${s.id}`} passHref>
+          <ShopCard
+            shopname={s.shopname}
+            category={s.category}
+            shopImageUrl={s.shopImageUrl}
+            description={s.description}
+          />
+        </Link>
+      </Box>
+    ))
   }
   const renderReview = (Reviews: Review[]) => {
-    return (
-      Reviews.map((r: Review) => (
-        <Box key={r.id}>
-          <ReviewCard
-            name={r.name}
-            star={r.star}
-            comment={r.comment}
-          />
-        </Box>
-      ))
-    )
+    return Reviews.map((r: Review) => (
+      <Box key={r.id}>
+        <ReviewCard name={r.name} star={r.star} comment={r.comment} />
+      </Box>
+    ))
   }
 
   const renderCampaign = (Campaigns: Campaign[]) => {
-    const sizewidth= { base: '480px' }
-    const sizeheight= { base: '240px' }
-    return (
-      Campaigns.map((c:Campaign) => (
-        <Box key={c.id}>
-          <Link href={`/campaign/${c.id}`} passHref>
+    const sizewidth = { base: '480px' }
+    const sizeheight = { base: '240px' }
+    return Campaigns.map((c: Campaign) => (
+      <Box key={c.id}>
+        <Link href={`/campaign/${c.id}`} passHref>
           <ScaleImage
-          src={c.campaignImageUrl}
-          width={480}
-          height={240}
-          containerWidth={sizewidth}
-          containerHeight={sizeheight}
-          objectFit="cover"
-          alt={'表示できてないよ～'} />
-            </Link>
-        </Box>
-      ))
-    )
+            src={c.campaignImageUrl}
+            width={480}
+            height={240}
+            containerWidth={sizewidth}
+            containerHeight={sizeheight}
+            objectFit="cover"
+            alt={'表示できてないよ～'}
+          />
+        </Link>
+      </Box>
+    ))
   }
   return (
     <Layout>
@@ -92,9 +85,7 @@ const Home: NextPage<HomeProps> = ({
               あなたの生活のシナジーに
             </Text>
           </Box>
-          <Box width="100%">
-            {renderCampaign(Campaigns)}
-          </Box>
+          <Box width="100%">{renderCampaign(Campaigns)}</Box>
         </Flex>
       </Flex>
       <Flex justifyContent="center">
@@ -104,10 +95,14 @@ const Home: NextPage<HomeProps> = ({
           width={{ base: '100%', md: '1040px' }}
         >
           <Box marginBottom={3}>
-            <Text as="h2" variant="large">お店の情報</Text>
+            <Text as="h2" variant="large">
+              お店の情報
+            </Text>
             {renderShop(SummaryShop)}
           </Box>
-          <Text as="h2" variant="large">レビュー</Text>
+          <Text as="h2" variant="large">
+            レビュー
+          </Text>
           {renderReview(Reviews)}
         </Box>
       </Flex>
@@ -120,17 +115,17 @@ export const getStaticProps: GetStaticProps = async () => {
     apiRootUrl: process.env.API_BASE_URL || 'http://localhost:5000',
   }
   // 各商品のトップ6個を取得し、静的ページを作成
-  const [SummaryShop, Reviews,Campaigns] = await Promise.all([
+  const [SummaryShop, Reviews, Campaigns] = await Promise.all([
     getShops(context),
     getReviews(context),
-    getCampaigns(context)
+    getCampaigns(context),
   ])
   return {
     props: {
       SummaryShop,
       Reviews,
-      Campaigns
-    }
+      Campaigns,
+    },
   }
 }
 

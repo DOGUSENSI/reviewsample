@@ -76,7 +76,10 @@ const Footer = () => {
         </Box>
       </Flex>
       <Box paddingTop={3} paddingBottom={2}>
-        <Text>このWebサイトはGijutsuhyoronsha Co., Ltd..らの著作物をベースに作成されました</Text>
+        <Text>
+          このWebサイトはGijutsuhyoronsha Co.,
+          Ltd..らの著作物をベースに作成されました
+        </Text>
       </Box>
     </footer>
   )

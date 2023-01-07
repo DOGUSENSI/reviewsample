@@ -37,6 +37,6 @@ export const Small = Template.bind({})
 Small.args = {
   shopname: 'テストバーガー',
   shopImageUrl: '/images/sample/1.jpg',
-  category: "ハンバーガー",
-  description:"テストなハンバーガーショップです"
+  category: 'ハンバーガー',
+  description: 'テストなハンバーガーショップです',
 }

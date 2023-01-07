@@ -9,14 +9,14 @@
     }*/
 
 export type Shop = {
-    id: number
-    shopname: string
-    shopImageUrl: string
-    category: string
-    description: string
-  }
+  id: number
+  shopname: string
+  shopImageUrl: string
+  category: string
+  description: string
+}
 
-  /*サンプル
+/*サンプル
 {
       "id":1,
       "name":"しまD",
@@ -24,25 +24,24 @@ export type Shop = {
       "star":4,
       "comment":"お好み焼きが美味しいです！"
     },*/
-  
-  // レビュー
-  export type Review = {
-    id: number
-    name:string
-    shopid:number
-    star:number
-    comment:string
-  }
 
-  //キャンペーン情報
+// レビュー
+export type Review = {
+  id: number
+  name: string
+  shopid: number
+  star: number
+  comment: string
+}
 
-  export type Campaign={
-    id:number
-    campaignImageUrl:string
-  }
-  
-  // APIコンテキスト
-  export type ApiContext = {
-    apiRootUrl: string
-  }
-  
+//キャンペーン情報
+
+export type Campaign = {
+  id: number
+  campaignImageUrl: string
+}
+
+// APIコンテキスト
+export type ApiContext = {
+  apiRootUrl: string
+}

@@ -40,35 +40,35 @@ const ShopCard = ({
   shopname,
   shopImageUrl,
   category,
-  description
+  description,
 }: ShopProps) => {
-
   const { size, imgSize } = { size: { base: '240px' }, imgSize: 240 }
 
   return (
     <ShopCardContainer>
       <Flex justifyContent="center">
-      <ShopCardImageContainer>
-        <ScaleImage
-          src={shopImageUrl}
-          width={imgSize ?? 240}
-          height={imgSize ?? 240}
-          containerWidth={size}
-          containerHeight={size}
-          objectFit="cover"
-          alt={'表示できてないよ～'} />
-      </ShopCardImageContainer>
-      <Box marginTop={1} marginLeft={1}>
-        <Text as="h2" variant="medium" margin={0} padding={0}>
-          {shopname}
-        </Text>
-        <Text as="p" variant="medium">
-          ジャンル:{category}
-        </Text>
-        <Text as="span" variant="medium">
-          {description}
-        </Text>
-      </Box>
+        <ShopCardImageContainer>
+          <ScaleImage
+            src={shopImageUrl}
+            width={imgSize ?? 240}
+            height={imgSize ?? 240}
+            containerWidth={size}
+            containerHeight={size}
+            objectFit="cover"
+            alt={'表示できてないよ～'}
+          />
+        </ShopCardImageContainer>
+        <Box marginTop={1} marginLeft={1}>
+          <Text as="h2" variant="medium" margin={0} padding={0}>
+            {shopname}
+          </Text>
+          <Text as="p" variant="medium">
+            ジャンル:{category}
+          </Text>
+          <Text as="span" variant="medium">
+            {description}
+          </Text>
+        </Box>
       </Flex>
     </ShopCardContainer>
   )

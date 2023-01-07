@@ -6,10 +6,13 @@ import Flex from 'components/layout/Flex'
 import Layout from 'components/templates/Layout'
 import getShops from 'services/shops/get-shops'
 import getReviews from 'services/reviews/getreviews'
-import { ApiContext, Shop, Review } from 'types'
+import getCampaigns from 'services/campaigns/getcampaigns'
+import { ApiContext, Shop, Review,Campaign } from 'types'
 import styled from 'styled-components'
 import ShopCard from 'components/organisms/Shopcard'
 import ReviewCard from 'components/organisms/Reviewcard'
+import AppLogo from 'components/atoms/AppLogo'
+import ScaleImage from 'components/atoms/ScaleImage'
 
 const Anchor = styled(Text)`
   cursor: pointer;
@@ -20,13 +23,13 @@ const Anchor = styled(Text)`
 type HomeProps = InferGetStaticPropsType<typeof getStaticProps>
 
 const Home: NextPage<HomeProps> = ({
-  SummaryShop, Reviews
+  SummaryShop, Reviews,Campaigns
 }: HomeProps) => {
   const renderShop = (Shops: Shop[]) => {
     return (
       Shops.map((s: Shop, i: number) => (
         <Box paddingLeft={i === 0 ? 0 : 2} key={s.id}>
-          <Link href={`/products/${s.id}`} passHref>
+          <Link href={`/shops/${s.id}`} passHref>
             <ShopCard
               shopname={s.shopname}
               category={s.category}
@@ -40,13 +43,34 @@ const Home: NextPage<HomeProps> = ({
   }
   const renderReview = (Reviews: Review[]) => {
     return (
-      Reviews.map((r: Review, i: number) => (
-        <Box paddingTop={i === 0 ? 0 : 2} key={r.id}>
+      Reviews.map((r: Review) => (
+        <Box key={r.id}>
           <ReviewCard
             name={r.name}
             star={r.star}
             comment={r.comment}
           />
+        </Box>
+      ))
+    )
+  }
+
+  const renderCampaign = (Campaigns: Campaign[]) => {
+    const sizewidth= { base: '480px' }
+    const sizeheight= { base: '240px' }
+    return (
+      Campaigns.map((c:Campaign) => (
+        <Box key={c.id}>
+          <Link href={`/campaign/${c.id}`} passHref>
+          <ScaleImage
+          src={c.campaignImageUrl}
+          width={480}
+          height={240}
+          containerWidth={sizewidth}
+          containerHeight={sizeheight}
+          objectFit="cover"
+          alt={'表示できてないよ～'} />
+            </Link>
         </Box>
       ))
     )
@@ -62,32 +86,14 @@ const Home: NextPage<HomeProps> = ({
         >
           <Box width="100%">
             <Text as="h1" marginBottom={0} color="white" variant="extraLarge">
-              Gihyo C2Cで
+              レストランリサーチャー
             </Text>
             <Text as="h1" marginTop={0} color="white" variant="extraLarge">
-              お気に入りのアイテムを見つけよう
+              あなたの生活のシナジーに
             </Text>
           </Box>
           <Box width="100%">
-            <Text as="p" color="white" variant="mediumLarge">
-              Gihyo
-              C2Cは実践的なNext.jsアプリケーション開発で使われるデモアプリです。モックサーバを使用しています。
-              ソースコードは
-              <Anchor
-                as="a"
-                style={{ textDecoration: 'underline' }}
-                target="_blank"
-                href="https://github.com/gihyo-book/ts-nextbook-app"
-                variant="mediumLarge"
-                color="white"
-              >
-                こちら
-              </Anchor>
-              のGithubからダウンロードできます。
-            </Text>
-            <Text as="p" color="white" variant="mediumLarge">
-              このアプリはTypeScript/Next.jsで作成されており、バックエンドのモックAPIはjson-serverが使用されています。
-            </Text>
+            {renderCampaign(Campaigns)}
           </Box>
         </Flex>
       </Flex>
@@ -114,14 +120,16 @@ export const getStaticProps: GetStaticProps = async () => {
     apiRootUrl: process.env.API_BASE_URL || 'http://localhost:5000',
   }
   // 各商品のトップ6個を取得し、静的ページを作成
-  const [SummaryShop, Reviews] = await Promise.all([
+  const [SummaryShop, Reviews,Campaigns] = await Promise.all([
     getShops(context),
-    getReviews(context)
+    getReviews(context),
+    getCampaigns(context)
   ])
   return {
     props: {
       SummaryShop,
-      Reviews
+      Reviews,
+      Campaigns
     }
   }
 }

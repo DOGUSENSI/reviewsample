@@ -58,7 +58,7 @@ const Footer = () => {
             </Box>
             <Box marginBottom={2}>
               <Link href="/" passHref>
-                <Anchor>配送と返品</Anchor>
+                <Anchor>企業情報</Anchor>
               </Link>
             </Box>
           </nav>
@@ -67,7 +67,7 @@ const Footer = () => {
           <nav>
             <Anchor
               as="a"
-              href="https://github.com/gihyo-book/ts-nextbook-app"
+              href="https://github.com/DOGUSENSI/reviewsample"
               target="_blank"
             >
               <GitHubIcon size={22} />
@@ -76,7 +76,7 @@ const Footer = () => {
         </Box>
       </Flex>
       <Box paddingTop={3} paddingBottom={2}>
-        <Text>© 2021 Gijutsuhyoronsha Co., Ltd.. All rights reserved.</Text>
+        <Text>このWebサイトはGijutsuhyoronsha Co., Ltd..らの著作物をベースに作成されました</Text>
       </Box>
     </footer>
   )

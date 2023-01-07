@@ -4,11 +4,7 @@ import AppLogo from 'components/atoms/AppLogo'
 import Button from 'components/atoms/Button'
 import {
   SearchIcon,
-  PersonIcon,
-  ShoppingCartIcon,
 } from 'components/atoms/IconButton'
-import ShapeImage from 'components/atoms/ShapeImage'
-//import Spinner from 'components/atoms/Spinner'
 import Text from 'components/atoms/Text'
 import Box from 'components/layout/Box'
 import Flex from 'components/layout/Flex'
@@ -61,28 +57,7 @@ const Header = () => {
           <NavLink>
             <Box display={{ base: 'none', md: 'block' }}>
               <Link href="/search" passHref>
-              <Anchor>すべて</Anchor>
-              </Link>
-            </Box>
-          </NavLink>
-          <NavLink>
-            <Box display={{ base: 'none', md: 'block' }}>
-              <Link href="/search/clothes" passHref>
-              <Anchor>トップス</Anchor>
-              </Link>
-            </Box>
-          </NavLink>
-          <NavLink>
-            <Box display={{ base: 'none', md: 'block' }}>
-              <Link href="/search/book" passHref>
-              <Anchor>本</Anchor>
-              </Link>
-            </Box>
-          </NavLink>
-          <NavLink>
-            <Box display={{ base: 'none', md: 'block' }}>
-              <Link href="/search/shoes" passHref>
-              <Anchor>シューズ</Anchor>
+              <Anchor>検索</Anchor>
               </Link>
             </Box>
           </NavLink>

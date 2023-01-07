@@ -33,6 +33,13 @@ export type Shop = {
     star:number
     comment:string
   }
+
+  //キャンペーン情報
+
+  export type Campaign={
+    id:number
+    campaignImageUrl:string
+  }
   
   // APIコンテキスト
   export type ApiContext = {
